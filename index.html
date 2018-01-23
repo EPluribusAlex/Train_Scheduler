@@ -1,19 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+
+	<meta charset="UTF-8">
+
 	<title>Train Scheduler</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<!-- custom stylesheet -->
+	<link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 <body>
+	
+	<!-- encloses all content -->
+	<div class="wrapper">
+		
+		<!-- header -->
+		<div class="jumbotron">
+			<div class="container">
+				
+			</div>		
+		</div>
+
+		<!-- main content container -->
+		<div class="container">
+			
+			<!-- current schedule row -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">Current Train Schedule</div>
+						<table class="table">
+							<tr>
+								<th>Train Name</th>
+								<th>Destination</th>
+								<th>Frequency</th>
+								<th>Next Arrival</th>
+								<th>Time till Arrival</th>
+							</tr>
+							<div id="add_trains"></div>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- add train row -->
+			<!-- <div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">Add Train</div>
+						<label for="input1">Name</label>
+						<label for="input2">Destination</label>
+						<label for="input3">First Train Time</label>
+						<label for="input4">Frequency</label>
+						<div class="input-group">
+							<input type="text" class="form-control" id="input1">
+							<input type="text" class="form-control" id="input2">
+							<input type="text" class="form-control" id="input3">
+							<input type="text" class="form-control" id="input4">
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+		</div><!-- close container -->
+
+		<!-- footer -->
+		<div class="">
+			
+		</div>
+
+	</div><!-- close wrapper -->
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- custom script -->
+	<script src="assets/javascript/app.js"></script>
 
 </body>
 </html>
