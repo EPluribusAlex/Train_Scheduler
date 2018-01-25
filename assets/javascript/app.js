@@ -15,6 +15,22 @@
 
 	  },
 
+	  ready: function() {
+
+	  	firebase.initializeApp(TS.config);
+
+	 		TS.dataListen();
+
+	  	$("#input_btn").on("click", function(event) { 
+
+	  		event.preventDefault();
+
+	  		TS.submit(); 	
+
+	  	});
+
+	  },
+
 	  dataListen: function() {
 
 	  	TS.ref.on("value", function(snapshot) {
@@ -33,34 +49,21 @@
 
 	  },
 
-	  ready: function() {
-
-	  	firebase.initializeApp(TS.config);
-
-	 		TS.dataListen();
-
-	  	$("#input_btn").on("click", function(event) { 
-
-	  		event.preventDefault();
-
-	  		TS.submit(); 	
-
-	  	});
-
-	  },
-
 	  display: function(arr) {
 
 	  	console.log(arr, "Firebase Data");
 
 	  	arr.forEach(function(entry) {
 
+	  		const nextArrive = TS.calcNext(entry),
+	  					timeTill = TS.calcTill(entry);
+
 	  		let tr = $("<tr>"),
 	  				th1 = $("<th>").text(entry.name),
 	  				th2 = $("<th>").text(entry.dest),
 	  				th3 = $("<th>").text(entry.freq),
-	  				th4 = $("<th>").text(),
-	  				th5 = $("<th>").text();
+	  				th4 = $("<th>").text(nextArrive),
+	  				th5 = $("<th>").text(timeTill);
 
 	  		tr.append(th1).append(th2).append(th3);
 
@@ -96,6 +99,24 @@
 		  else {
 		  	console.log("Incomplete fields");
 		  }
+
+	  },
+
+	  calcNext: function(obj) {
+
+	  	moment.relativeTimeThreshold('m', 1440);
+
+	  	const timeDist = moment(obj.firstTime, "HHmm").fromNow("m");
+
+	  	console.log(obj.firstTime);
+
+	  	console.log(timeDist);
+
+	  },
+
+	  calcTill: function() {
+
+
 
 	  }
 
