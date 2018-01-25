@@ -10,7 +10,7 @@
 	  },
 
 	  uiConfig: {
-    	signInSuccessUrl: '<url-to-redirect-to-on-success>',
+    	signInSuccessUrl: 'https://epluribusalex.github.io/Train_Scheduler/',
       signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,

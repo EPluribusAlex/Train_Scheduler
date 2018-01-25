@@ -20,8 +20,6 @@
 	
 	<!-- encloses all content -->
 	<div class="wrapper">
-
-		<div id="firebaseui-auth-container"></div>
 		
 		<!-- header -->
 		<div class="jumbotron">
@@ -29,6 +27,8 @@
 				<h2>Train Schedule Planner</h2>
 			</div>		
 		</div>
+	
+		<div id="firebaseui-auth-container"></div><!-- space for firebase auth UI -->
 
 		<!-- main content container -->
 		<div class="container">
@@ -49,9 +49,7 @@
 										<th>Time till Arrival (in min)</th>
 									</tr>
 								</thead>
-								<tbody id="add_trains">
-									<!-- train tables added here -->
-								</tbody>
+								<tbody id="add_trains"></tbody><!-- train tables added here -->
 							</table>
 						</div>
 					</div>
