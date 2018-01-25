@@ -53,19 +53,20 @@
 
 	  	console.log(arr, "Firebase Data");
 
+	  	$("#add_trains").empty();
+
 	  	arr.forEach(function(entry) {
 
-	  		const nextArrive = TS.calcNext(entry),
-	  					timeTill = TS.calcTill(entry);
+	  		const tInfo = TS.calcTime(entry);
 
 	  		let tr = $("<tr>"),
 	  				th1 = $("<th>").text(entry.name),
 	  				th2 = $("<th>").text(entry.dest),
 	  				th3 = $("<th>").text(entry.freq),
-	  				th4 = $("<th>").text(nextArrive),
-	  				th5 = $("<th>").text(timeTill);
+	  				th4 = $("<th>").text(tInfo.nextT),
+	  				th5 = $("<th>").text(tInfo.waitT);
 
-	  		tr.append(th1).append(th2).append(th3);
+	  		tr.append(th1).append(th2).append(th3).append(th4).append(th5);
 
 	  		$("#add_trains").append(tr);
 
@@ -102,21 +103,40 @@
 
 	  },
 
-	  calcNext: function(obj) {
+	  calcTime: function(obj) {
 
-	  	moment.relativeTimeThreshold('m', 1440);
+	  	let t;
 
-	  	const timeDist = moment(obj.firstTime, "HHmm").fromNow("m");
+	  	const timeDist = moment(obj.firstTime, "HHmm").diff(moment(), "minutes");
 
-	  	console.log(obj.firstTime);
+	  	console.log(timeDist, "min till first train");
 
-	  	console.log(timeDist);
+	  	if(Math.sign(timeDist) === -1) {
 
-	  },
+	  		let newTimeDist = timeDist;
 
-	  calcTill: function() {
+	  		while(Math.sign(newTimeDist) === -1) {
 
+	  			newTimeDist = newTimeDist + parseInt(obj.freq);
 
+	  		}
+
+	  		t = newTimeDist;
+
+	  	}
+
+	  	else {
+
+	  		t = timeDist;
+
+	  	}
+
+	  	console.log(t, "min till next train");
+	  	
+	  	return {
+	  		nextT: moment().add(t, "minutes").format("HHmm").toString(),
+	  		waitT: t.toString()
+	  	};
 
 	  }
 
