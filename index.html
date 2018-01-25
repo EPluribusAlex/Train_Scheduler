@@ -20,8 +20,8 @@
 		
 		<!-- header -->
 		<div class="jumbotron">
-			<div class="container">
-				
+			<div class="container text-center">
+				<h2>Train Schedule Planner</h2>
 			</div>		
 		</div>
 
@@ -33,38 +33,53 @@
 				<div class="col-md-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">Current Train Schedule</div>
-						<table class="table">
-							<tr>
-								<th>Train Name</th>
-								<th>Destination</th>
-								<th>Frequency</th>
-								<th>Next Arrival</th>
-								<th>Time till Arrival</th>
-							</tr>
-							<div id="add_trains"></div>
-						</table>
+						<div class="panel-body">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Train Name</th>
+										<th>Destination</th>
+										<th>Frequency (in min)</th>
+										<th>Next Arrival</th>
+										<th>Time till Arrival (min)</th>
+									</tr>
+								</thead>
+								<tbody id="add_trains">
+									<!-- train tables added here -->
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<!-- add train row -->
-			<!-- <div class="row">
+			<!-- submit new train row -->
+			<div class="row">
 				<div class="col-md-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">Add Train</div>
-						<label for="input1">Name</label>
-						<label for="input2">Destination</label>
-						<label for="input3">First Train Time</label>
-						<label for="input4">Frequency</label>
-						<div class="input-group">
-							<input type="text" class="form-control" id="input1">
-							<input type="text" class="form-control" id="input2">
-							<input type="text" class="form-control" id="input3">
-							<input type="text" class="form-control" id="input4">
+						<div class="panel-body">
+							<div class="form-group">
+								<label for="input1">Name</label>
+								<input type="text" class="form-control" id="input1">
+							</div>
+							<div class="form-group">
+								<label for="input2">Destination</label>
+								<input type="text" class="form-control" id="input2">
+							</div>
+							<div class="form-group">
+								<label for="input3">First Train Time (HHMM)</label>
+								<input type="text" class="form-control" id="input3">
+							</div>
+							<div class="form-group">
+								<label for="input4">Frequency (min)</label>
+								<input type="text" class="form-control" id="input4">
+							</div>
+							<input type="submit" class="btn btn-default" id="input_btn" value="Submit">
 						</div>
 					</div>
 				</div>
-			</div> -->
+			</div>
 
 		</div><!-- close container -->
 
@@ -80,6 +95,9 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- firebase -->
+	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 
 	<!-- custom script -->
 	<script src="assets/javascript/app.js"></script>
