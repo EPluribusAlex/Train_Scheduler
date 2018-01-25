@@ -12,11 +12,16 @@
 	<!-- custom stylesheet -->
 	<link rel="stylesheet" href="assets/css/style.css">
 
+	<!-- firebase athorization UI -->
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+
 </head>
 <body>
 	
 	<!-- encloses all content -->
 	<div class="wrapper">
+
+		<div id="firebaseui-auth-container"></div>
 		
 		<!-- header -->
 		<div class="jumbotron">
@@ -101,6 +106,9 @@
 
 	<!-- firebase -->
 	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+	
+	<!-- firebase authorization -->
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
 
 	<!-- custom script -->
 	<script src="assets/javascript/app.js"></script>
