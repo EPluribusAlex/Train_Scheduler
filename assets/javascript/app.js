@@ -64,7 +64,7 @@
 	  // responds to changes to firebase data 
 	  dataListen: function() {
 
-	  	TS.ref.child("users").on("value", function(snapshot) {
+	  	TS.ref.on("value", function(snapshot) {
 
 	  		let a = [];
 
