@@ -13,6 +13,29 @@
 	  	return firebase.database().ref("trains");
 	  },
 
+	  // connects to firebase and looks for authorization 
+	  init: function() {
+
+	  	firebase.initializeApp(TS.config);
+
+			const provider = new firebase.auth.GoogleAuthProvider();
+
+			firebase.auth().signInWithPopup(provider).then(function(result) {
+			  const token = result.credential.accessToken,
+			  	user = result.user;
+			  console.log(token, "user access token");
+			  console.log(user, "user info");
+			}).catch(function(error) {
+			  const errorCode = error.code,
+			  	errorMessage = error.message,
+			  	email = error.email,
+			  	credential = error.credential;
+			});	 	
+
+			TS.ready();	
+
+	  },
+
 	  // app flow on sign-in success
 	  ready: function() {
 
@@ -38,33 +61,10 @@
 
 	  },
 
-	  // connects to firebase and looks for authorization 
-	  init: function() {
-
-	  	firebase.initializeApp(TS.config);
-
-			var provider = new firebase.auth.GoogleAuthProvider();
-
-			firebase.auth().signInWithPopup(provider).then(function(result) {
-			  var token = result.credential.accessToken,
-			  	user = result.user;
-			  console.log(token, "user access token");
-			  console.log(user, "user info");
-			}).catch(function(error) {
-			  var errorCode = error.code,
-			  	errorMessage = error.message,
-			  	email = error.email,
-			  	credential = error.credential;
-			});	 	
-
-			TS.ready();	
-
-	  },
-
 	  // responds to changes to firebase data 
 	  dataListen: function() {
 
-	  	TS.ref.on("value", function(snapshot) {
+	  	TS.ref..child("users").on("value", function(snapshot) {
 
 	  		let a = [];
 
