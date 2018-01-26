@@ -55,7 +55,9 @@
 			  	errorMessage = error.message,
 			  	email = error.email,
 			  	credential = error.credential;
-			});	 		
+			});	 	
+
+			TS.ready();	
 
 	  },
 
