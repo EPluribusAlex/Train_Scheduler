@@ -21,15 +21,10 @@
 			const provider = new firebase.auth.GoogleAuthProvider();
 
 			firebase.auth().signInWithPopup(provider).then(function(result) {
-			  const token = result.credential.accessToken,
-			  	user = result.user;
-			  console.log(token, "user access token");
-			  console.log(user, "user info");
+			  console.log(result.user, "user signed in");
 			}).catch(function(error) {
 			  const errorCode = error.code,
-			  	errorMessage = error.message,
-			  	email = error.email,
-			  	credential = error.credential;
+			  	errorMessage = error.message;
 			});	 	
 
 			TS.ready();	
