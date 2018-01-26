@@ -9,36 +9,14 @@
 	    messagingSenderId: "53248747928"
 	  },
 
-	  uiConfig: {
-      signInFlow: "popup",
-      signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.GithubAuthProvider.PROVIDER_ID,
-      ],
-      // Terms of service url.
-      tosUrl: '<your-tos-url>'
-    },
-
 	  get ref() {
 	  	return firebase.database().ref("trains");
 	  },
 
-	  // enables user authorization
-	  signIn: function() {
-
-	  	var ui = new firebaseui.auth.AuthUI(firebase.auth());
-	  	ui.start('#firebaseui-auth-container', TS.uiConfig);
-
-	  },
-
-	  // controls app flow 
+	  // app flow on sign-in success
 	  ready: function() {
 
-	  	firebase.initializeApp(TS.config);
-
-	  	TS.signIn();
-
-	 		TS.dataListen();
+	  	TS.dataListen();
 
 	  	$("#input_btn").on("click", function(event) { 
 
@@ -47,6 +25,34 @@
 	  		TS.submit(); 	
 
 	  	});
+
+	  },
+
+	  // connects to firebase and looks for authorization 
+	  init: function() {
+
+	  	firebase.initializeApp(TS.config);
+
+			var provider = new firebase.auth.GoogleAuthProvider();
+
+			firebase.auth().signInWithPopup(provider).then(function(result) {
+			  // This gives you a Google Access Token. You can use it to access the Google API.
+			  var token = result.credential.accessToken;
+			  console.log(token, "user access token");
+			  // The signed-in user info.
+			  var user = result.user;
+			  console.log(user, "user info");
+			  // ...
+			}).catch(function(error) {
+			  // Handle Errors here.
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  // The email of the user's account used.
+			  var email = error.email;
+			  // The firebase.auth.AuthCredential type that was used.
+			  var credential = error.credential;
+			  // ...
+			});	 		
 
 	  },
 
@@ -165,4 +171,4 @@
 
 	};
 
-$(document).ready(function() { TS.ready(); });
+$(document).ready(function() { TS.init(); });
