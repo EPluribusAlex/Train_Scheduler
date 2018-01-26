@@ -17,3 +17,12 @@ h2 {
 	font-family: 'Supermercado One', cursive;
 	font-size: 40px;
 }
+
+.panel-heading {
+	font-family: 'Supermercado One', cursive;
+	font-size: 20px;
+}
+
+.td {
+	color: #8D425A;
+}
