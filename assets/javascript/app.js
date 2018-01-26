@@ -43,6 +43,7 @@
 			  var user = result.user;
 			  console.log(user, "user info");
 			  // ...
+			  TS.ready();
 			}).catch(function(error) {
 			  // Handle Errors here.
 			  var errorCode = error.code;
