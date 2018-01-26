@@ -9,26 +9,25 @@
 	    messagingSenderId: "53248747928"
 	  },
 
+	  uiConfig: {
+      signInFlow: "popup",
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      ],
+      // Terms of service url.
+      tosUrl: '<your-tos-url>'
+    },
+
 	  get ref() {
-
 	  	return firebase.database().ref("trains");
-
 	  },
 
 	  // enables user authorization
 	  signIn: function() {
 
-	  	const provider = new firebase.auth.GoogleAuthProvider();
-
-	  	firebase.auth().signInWithPopup(provider).then(function(result) {
-			  const token = result.credential.accessToken,
-			  			user = result.user;
-			}).catch(function(error) {
-			  const errorCode = error.code,
-			  			errorMessage = error.message,
-			  			email = error.email,
-			  			credential = error.credential;
-			});
+	  	var ui = new firebaseui.auth.AuthUI(firebase.auth());
+	  	ui.start('#firebaseui-auth-container', TS.uiConfig);
 
 	  },
 
